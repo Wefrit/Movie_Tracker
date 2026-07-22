@@ -1,9 +1,6 @@
 from functions import *
 
-
-movie_list =[{'title':'filme1', 'favorite':True},{'title':'2', 'favorite':True},{'title':'filme4','favorite':True}]
-
-def menu():
+def menu(movie_list):
     MENU_LIST = ['1 - Adicionar Filme',
                  '2 - Filmes Adicionados', 
                  '3 - Adicionar Favoritos',
@@ -26,8 +23,9 @@ def menu():
                 add_favorite(movie_list)
                 wait_user()
             elif selected_option == '4':
+                favorite_list = filter_movie_list(movie_list, mode='favorites')
                 print('\nFILMES FAVORITOS')
-                exhibit_list_movies(movie_list)
+                exhibit_list_movies(favorite_list)
                 wait_user()
             elif selected_option == '5':
                 remove_favorite(movie_list)
@@ -38,5 +36,10 @@ def menu():
             print('Selecione uma opção válida.\n')
         clean_screen()
 
+def main():
+    movie_list = load_movies()
+    menu(movie_list)
 
-menu()
+
+if __name__ == '__main__':
+    main()

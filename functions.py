@@ -1,6 +1,8 @@
 import os
 import json
 
+
+
 # adicionar filme
 def add_movie(movie_list):
     while True:
@@ -9,6 +11,7 @@ def add_movie(movie_list):
             print('Adicione um valor válido ao filme')
         else:
             movie_list.append({'title':movie, 'favorite':False})
+            save_movies(movie_list)
             print('Filme adicionado com sucesso!\n')
             break
 
@@ -48,6 +51,7 @@ def add_favorite(movie_list):
                     else:
                         movie = non_favorite_list[int(option)-1]
                         movie['favorite'] = True
+                        save_movies(movie_list)
                         print('Filme favoritado com sucesso.\n')
                         break
                 else:
@@ -73,6 +77,7 @@ def remove_favorite(movie_list):
                         break
                     else:
                         favorite_list[int(option)-1]['favorite'] = False
+                        save_movies(movie_list)
                         print('Filme removido dos favoritos.\n')
                         break
                 else:
@@ -105,7 +110,6 @@ def wait_user():
     input('Aperte Enter para retornar ao menu')
 
 def load_movies():
-
     try:
         with open('movies_list.json', 'r') as file:
             return json.load(file)
@@ -114,9 +118,5 @@ def load_movies():
         return []
 
 def save_movies(movie_list):
-    with open('movie_list.json','w') as file:
+    with open('movies_list.json','w') as file:
         json.dump(movie_list, file)
-
-lista = ['lista']
-
-save_movies(lista)
