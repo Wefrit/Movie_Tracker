@@ -1,5 +1,5 @@
 import os
-
+import json
 
 # adicionar filme
 def add_movie(movie_list):
@@ -103,3 +103,20 @@ def clean_screen():
 # esperar usuário ler mensagem 
 def wait_user():
     input('Aperte Enter para retornar ao menu')
+
+def load_movies():
+
+    try:
+        with open('movies_list.json', 'r') as file:
+            return json.load(file)
+        
+    except FileNotFoundError:
+        return []
+
+def save_movies(movie_list):
+    with open('movie_list.json','w') as file:
+        json.dump(movie_list, file)
+
+lista = ['lista']
+
+save_movies(lista)
