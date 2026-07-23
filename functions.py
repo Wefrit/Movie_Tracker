@@ -2,7 +2,6 @@ import os
 import json
 
 
-
 # adicionar filme
 def add_movie(movie_list: list):
     '''Add a movie to the movie list'''
@@ -42,32 +41,6 @@ def filter_movie_list(movie_list: list, mode:str | None = ''):
         return non_favorite_list
     else:
         return movie_list
-    
-# adicionar filme aos favoritos
-def add_favorite(movie_list:list):
-    '''Change the key 'favorite' of a movie from False to True'''
-
-    if movie_list:       
-        movie = movie_selection(movie_list)
-        if movie is not None:
-            movie['favorite'] = True
-            save_movies(movie_list)
-            print('Filme adicionado aos favoritos.\n')
-    else:
-        print('Não existem filmes nessa lista.')
-
-# remover filme dos faovritos
-def remove_favorite(movie_list:list):
-    '''Change the key 'favorite' of a movie from True to False'''
-
-    if movie_list:       
-        movie = movie_selection(movie_list)
-        if movie is not None:
-            movie['favorite'] = False
-            save_movies(movie_list)
-            print('Filme removido dos favoritos.\n')
-    else:
-        print('Não existem filmes nessa lista.')
 
 # mostrar listas de filmes
 def exhibit_list_movies(movie_list:list):
@@ -128,7 +101,7 @@ def movie_selection(movie_list:list):
             print('Selecione um valor válido.\n')
 
 
-def change_favorite(movie_list:list):
+def change_favorite_status(movie_list:list):
     '''Alters the boolean of the key 'favorite'''
 
     if movie_list:       
