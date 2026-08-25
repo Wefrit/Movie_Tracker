@@ -11,7 +11,6 @@ def add_movie(movie_list: list):
             print('Adicione um valor válido ao filme')
         else:
             movie_list.append({'title':movie, 'favorite':False})
-            save_movies(movie_list)
             print('Filme adicionado com sucesso!\n')
             break
 
@@ -54,7 +53,6 @@ def change_favorite_status(movie_list:list):
                 else:
                     movie['favorite'] = True
                     print('Filme adicionado aos favoritos.\n')
-                save_movies(movie_list)
     else:
         print('Não existem filmes nessa lista.')
     
