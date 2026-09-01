@@ -1,4 +1,4 @@
-from Movies.movies import filter_movie_list
+from Movies.movies import filter_movie_list, change_favorite_status
 from UI.ui import exhibit_list_movies
 import pytest
 
@@ -23,3 +23,12 @@ def test_exhibit(capsys,movie_list, expected):
     exhibit_list_movies(movie_list)
     captured = capsys.readouterr()
     assert captured.out == expected
+
+movie_non_favorite = {"title": "Matrix", "favorite": False}
+movie_favorite = {"title": "Interstelar", "favorite": True}
+@pytest.mark.parametrize('movie, expected',[(movie_favorite,False), 
+                                            (movie_non_favorite,True)])
+def test_change_favorite(movie, expected):
+
+    change_favorite_status(movie)
+    assert movie["favorite"] == expected

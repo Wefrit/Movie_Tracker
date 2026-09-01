@@ -41,20 +41,13 @@ def filter_movie_list(movie_list: list, mode:str | None = ''):
         return movie_list
 
 # alterar status de favorito
-def change_favorite_status(movie_list:list):
+def change_favorite_status(movie):
     '''Alters the boolean of the key 'favorite'''
-
-    if movie_list:       
-            movie = movie_selection(movie_list)
-            if movie is not None:
-                if movie['favorite']:
-                    movie['favorite'] = False
-                    print('Filme removido dos favoritos.\n')
-                else:
-                    movie['favorite'] = True
-                    print('Filme adicionado aos favoritos.\n')
+    if movie['favorite']:
+        movie['favorite'] = False
     else:
-        print('Não existem filmes nessa lista.')
+        movie['favorite'] = True
+
 
 
 

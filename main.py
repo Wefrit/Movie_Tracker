@@ -26,9 +26,14 @@ def menu(movie_list):
                 non_favorite_list = filter_movie_list(movie_list, mode='non_favorites')
                 print('\nLISTA DE FILMES\n')
                 exhibit_list_movies(non_favorite_list)
-                change_favorite_status(non_favorite_list)
-                save_movies(movie_list)
-                wait_user()
+                movie = movie_selection(non_favorite_list)
+                if movie:
+                    change_favorite_status(movie)
+                    print('Filme adicionado aos favoritos.\n')
+                    save_movies(movie_list)
+                    wait_user()
+                else:
+                    clean_screen()
             elif selected_option == '4':
                 favorite_list = filter_movie_list(movie_list, mode='favorites')
                 print('\nFILMES FAVORITOS')
@@ -38,9 +43,14 @@ def menu(movie_list):
                 favorite_list = filter_movie_list(movie_list, mode='favorites')
                 print('\nFILMES FAVORITOS\n')
                 exhibit_list_movies(favorite_list)
-                change_favorite_status(favorite_list)
-                save_movies(movie_list)
-                wait_user()
+                movie = movie_selection(favorite_list)
+                if movie:
+                    change_favorite_status(movie)
+                    print('Filme removido dos favoritos.\n')
+                    save_movies(movie_list)
+                    wait_user()
+                else:
+                    clean_screen()
             elif selected_option == '0':
                 break
         else:
