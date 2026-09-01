@@ -1,11 +1,12 @@
 from Movies.movies import filter_movie_list
+from UI.ui import exhibit_list_movies
 import pytest
 
 
-movie_list_favorites = [{'movie' : 'filme1', 'favorite': True}, {'movie':'filme2', 'favorite': True}]
-movie_list = [{'movie' : 'filme1', 'favorite': True}, {'movie':'filme2', 'favorite': False}]
-movie_list_nonfavorites = [{'movie' : 'filme1', 'favorite': False}, {'movie':'filme2', 'favorite': False}]
-movie_list_combined = [{'movie' : 'filme1', 'favorite': True}, {'movie':'filme2', 'favorite': False}]
+movie_list_favorites = [{'title' : 'filme1', 'favorite': True}, {'title':'filme2', 'favorite': True}]
+movie_list = [{'title' : 'filme1', 'favorite': True}, {'title':'filme2', 'favorite': False}]
+movie_list_nonfavorites = [{'title' : 'filme1', 'favorite': False}, {'title':'filme2', 'favorite': False}]
+movie_list_combined = [{'title' : 'filme1', 'favorite': True}, {'title':'filme2', 'favorite': False}]
 empty_list = []
 @pytest.mark.parametrize('list, mode, expected',[(movie_list_favorites,'favorites', movie_list_favorites),
                                                  (movie_list_combined,'favorites', [movie_list_combined[0]]),
@@ -13,5 +14,12 @@ empty_list = []
                                                  (empty_list,'favorites', empty_list),
                                                  (movie_list_nonfavorites,'non_favorites', movie_list_nonfavorites)
                                                  ])
-def test(list, mode, expected):
+def test_movie_list(list, mode, expected):
     assert filter_movie_list(list, mode) == expected
+
+@pytest.mark.parametrize('movie_list, expected',[(movie_list,'1 - filme1\n2 - filme2\n\n\n'),
+                                                 (empty_list, 'Não existem filmes cadastrados nesta seção.\n\n')])
+def test_exhibit(capsys,movie_list, expected):
+    exhibit_list_movies(movie_list)
+    captured = capsys.readouterr()
+    assert captured.out == expected
