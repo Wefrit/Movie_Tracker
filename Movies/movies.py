@@ -55,4 +55,7 @@ def change_favorite_status(movie_list:list):
                     print('Filme adicionado aos favoritos.\n')
     else:
         print('Não existem filmes nessa lista.')
+
+
+
     

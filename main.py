@@ -16,6 +16,7 @@ def menu(movie_list):
         if selected_option in ('1','2','3','4','5','0'):
             if selected_option == '1':
                 add_movie(movie_list)
+                save_movies(movie_list)
                 wait_user()
             elif selected_option == '2':
                 print('\nLISTA DE FILMES')
