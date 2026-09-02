@@ -1,4 +1,4 @@
-from Movies.movies import filter_movie_list, change_favorite_status
+from Movies.movies import filter_movie_list, change_favorite_status, add_movie
 from UI.ui import exhibit_list_movies
 import pytest
 
@@ -32,3 +32,7 @@ def test_change_favorite(movie, expected):
 
     change_favorite_status(movie)
     assert movie["favorite"] == expected
+
+def test_add_movie():
+    add_movie(empty_list,'filme')
+    assert empty_list == [{'title':'filme', 'favorite':False}]

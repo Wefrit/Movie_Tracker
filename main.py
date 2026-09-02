@@ -15,7 +15,14 @@ def menu(movie_list):
         selected_option = input('Selecione uma opção: ')
         if selected_option in ('1','2','3','4','5','0'):
             if selected_option == '1':
-                add_movie(movie_list)
+                while True:
+                    movie = input('Qual filme deseja adicionar na lista? ')
+                    if movie.strip() == '':
+                        print('Adicione um valor válido ao filme')
+                    else:
+                        break
+                add_movie(movie_list, movie)
+                print('Filme adicionado com sucesso!\n')
                 save_movies(movie_list)
                 wait_user()
             elif selected_option == '2':

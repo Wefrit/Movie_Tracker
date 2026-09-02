@@ -2,17 +2,10 @@ from Storage.storage import save_movies
 from UI.ui import movie_selection
 
 # adicionar filme
-def add_movie(movie_list: list):
+def add_movie(movie_list: list, movie: str):
     '''Add a movie to the movie list'''
+    movie_list.append({'title':movie, 'favorite':False})
 
-    while True:
-        movie = input('Qual filme deseja adicionar na lista? ')
-        if movie.strip() == '':
-            print('Adicione um valor válido ao filme')
-        else:
-            movie_list.append({'title':movie, 'favorite':False})
-            print('Filme adicionado com sucesso!\n')
-            break
 
 # mostrar listas de filmes
 def filter_movie_list(movie_list: list, mode:str | None = ''):
