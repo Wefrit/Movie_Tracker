@@ -6,6 +6,10 @@ def add_movie(movie_list: list, movie: str):
     '''Add a movie to the movie list'''
     movie_list.append({'title':movie, 'favorite':False})
 
+def remove_movie(movie_list: list, movie: str):
+    '''Remove a movie from the movie list'''
+    movie_list.remove(movie)
+
 
 # mostrar listas de filmes
 def filter_movie_list(movie_list: list, mode:str | None = ''):
