@@ -9,12 +9,13 @@ def menu(movie_list):
                  '4 - Adicionar Favoritos',
                  '5 - Filmes Favoritos',
                  '6 - Remover Favorito',
+                 '7 - Dados da Lista de Filmes',
                  '0 - Sair']
     while True:
         for option in MENU_LIST:
             print(option)
         selected_option = input('Selecione uma opção: ')
-        if selected_option in ('1','2','3','4','5','6','0'):
+        if selected_option in ('1','2','3','4','5','6','7','0'):
             if selected_option == '1':
                 while True:
                     movie = input('Qual filme deseja adicionar na lista? ')
@@ -70,6 +71,10 @@ def menu(movie_list):
                     wait_user()
                 else:
                     clean_screen()
+            elif selected_option == '7':
+                print('\nDados da Lista\n')
+                show_data(movie_list_data(movie_list))
+                wait_user()
             elif selected_option == '0':
                 break
         else:

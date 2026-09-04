@@ -1,5 +1,4 @@
 import os
-from Storage.storage import *
 # mostrar listas de filmes
 def exhibit_list_movies(movie_list:list):
     '''Prints a movie list in order'''
@@ -43,3 +42,8 @@ def movie_selection(movie_list:list):
                 return movie_list[int(option)-1]
         else:
             print('Selecione um valor válido.\n')
+
+def show_data(movie_list_data: dict):
+    for key, value in movie_list_data.items():
+        print(f'{key}: {value}')
+    print('\n')
