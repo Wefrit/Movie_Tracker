@@ -15,5 +15,3 @@ def save_movies(movie_list:list):
 
     with open('movies_list.json','w') as file:
         json.dump(movie_list, file)
-
-
