@@ -32,15 +32,17 @@ def movie_selection(movie_list:list):
     '''
 
     while True:
-        option = input('Selecione um filme (número) ou aperte 0 para cancelar: ')
-        if option.isnumeric():
-            if int(option) > len(movie_list):
-                print('Selecione um valor válido.\n')
-            elif option == '0':
+        try:
+            option = int(input('Selecione um filme (número) ou aperte 0 para cancelar: '))
+            if option < 0 :
+                print('Valor abaixo do permitido.\n')
+            elif option == 0:
                 break
+            elif option > len(movie_list):
+                print('Valor acima do permitido.\n')
             else:
-                return movie_list[int(option)-1]
-        else:
+                return movie_list[option-1]
+        except ValueError:
             print('Selecione um valor válido.\n')
 
 def show_data(movie_list_data: dict):
