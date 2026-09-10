@@ -21,19 +21,21 @@ def filter_movie_list(movie_list: list, mode:str | None = ''):
     \n
     None -> returns a list with all movies\n
     '''
-    favorite_list = []
-    non_favorite_list=[]
-
-    for movie in movie_list:
-        if movie['favorite']:
-            favorite_list.append(movie)
-        else:
-            non_favorite_list.append(movie)
 
     if mode == 'favorites':
+        favorite_list = []
+        for movie in movie_list:
+            if movie['favorite']:
+                favorite_list.append(movie)
         return favorite_list
+    
     elif mode == 'non_favorites':
+        non_favorite_list=[]
+        for movie in movie_list:
+            if not movie['favorite']:
+                non_favorite_list.append(movie)
         return non_favorite_list
+        
     else:
         return movie_list
 
