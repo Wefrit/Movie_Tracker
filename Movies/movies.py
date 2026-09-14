@@ -5,6 +5,9 @@ from UI.ui import movie_selection, exhibit_list_movies
 # adicionar filme
 def add_movie(movie_list: list, movie: str):
     '''Add a movie to the movie list'''
+    if movie.strip() == '':
+        raise ValueError
+    
     movie_list.append({'title':movie, 'favorite':False})
 
 def remove_movie(movie_list: list, movie: str):

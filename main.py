@@ -1,6 +1,7 @@
 from Movies.movies import *
 from Storage.storage import *
 from UI.ui import *
+import json 
 
 def menu(movie_list):
     MENU_LIST = ['1 - Adicionar Filme',
@@ -17,15 +18,13 @@ def menu(movie_list):
         selected_option = input('Selecione uma opção: ')
         if selected_option in ('1','2','3','4','5','6','7','0'):
             if selected_option == '1':
-                while True:
+                try:
                     movie = input('Qual filme deseja adicionar na lista? ')
-                    if movie.strip() == '':
-                        print('Adicione um valor válido ao filme')
-                    else:
-                        break
-                add_movie(movie_list, movie)
-                print('Filme adicionado com sucesso!\n')
-                save_movies(movie_list)
+                    add_movie(movie_list, movie)
+                    print('Filme adicionado com sucesso!\n')
+                    save_movies(movie_list)
+                except ValueError:
+                    print('Título inválido. Digite um valor válido')
                 wait_user()
             elif selected_option == '2':
                 print('\nLISTA DE FILMES\n')
@@ -82,7 +81,13 @@ def menu(movie_list):
         clean_screen()
 
 def main():
-    movie_list = load_movies()
+    try:
+        movie_list = load_movies()
+
+    except json.JSONDecodeError:
+        print('Arquivo corrompido')
+        return    
+    
     menu(movie_list)
 
 
